@@ -59,7 +59,30 @@ for(auto& s: myin){
 }
 cout << "\n mys stack : " << mys; // 50 5 11 70 8 19 10 34
 ```
-- 위와 같이 __Operator Overloading__ 을 통해서 ```<<``` 연산자로 출력되지 않는 Container을 가능하게 만든다.
+- 위와 같이 __Operator Overloading__ 을 통해서 ```<<``` 연산자로 출력되지 않는 Container을 가능하게 만든다. ==> By Professor
+- 아래는 내가 직접 만들어 본 Stack 출력 함수이다.
+```C++
+void print_stack(stack<int> myS, vector<int> v) {
+	while (!myS.empty()) {
+		v.push_back(myS.top());
+		myS.pop();
+	}                            // Stack은 저장을 하게 되면, 마지막 값이 Stack의 제일 앞에 존재하게 된다.
+	reverse(v.begin(), v.end()); // 따라서 내가 넣은 순서대로 출력을 하기 위해서, Vector을 거꾸로 뒤집는다.
+	for (auto e : v) cout << e << " "; // 물론 Stack의 구조를 그대로 출력하고 싶은거라면 위의 while 문만 있으면 출력이 된다.
+}
+
+int main(void) {
+	vector<int> v;
+	stack<int> myS;
+  
+	myS.push(111);
+	myS.push(222);
+	myS.push(333);
+	myS.push(444);
+	
+	print_stack(myS, v);
+}
+```
 
 ### Stack Clearing
 ```C++
