@@ -40,6 +40,7 @@ int main(){
   cout << "\n va.size() = " << va.size(); // 0
   cout << "\n sizeof(vb) = " << sizeof(vb); // 12
   cout << "\n vb.size() = " << vb.size(); // 6
+  cout << "\n vb.max_size() = " << vb.max_size(); // 만들 수 있는 vector size의 최대값 출력.
 ```
 - Vector의 크기를 확인할 수 있는 2가지 메서드이다.
 - sizeof(v) 메서드는 선언된 객체의 크기를 반환해주는 함수로, Vector은 Pointer 3개로 구성된 객체라서, 4 * 3 = 12가 반환되었다.
