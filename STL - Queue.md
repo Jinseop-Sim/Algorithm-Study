@@ -32,6 +32,23 @@ int main(void){
    cout << myS.top() << endl;
    for(auto e : myD) cout << e << endl; // Deque는 Container 이므로, Vector와 같이 Range-Based for loop을 이용한 출력 또한 가능하다.
 }
+```
 
+### Size of Queue
+```C++
+cout << myQ.size() << endl; // 0, empty
+for (int i = 0; i < 4; i++) myQ.push(i);
+cout << myQ.size() << endl; // 4개의 원소가 들어갔으므로 size()는 4가 된다.
 
+cout << myQ.empty() << endl; // Queue또한 Stack과 마찬가지로 empty() method를 이용해 비었는지 확인이 가능하다.
+```
+
+### Queue Clearing
+```C++
+queue <int> Q;
+Q.push(11);
+Q.push(12);
+
+Q = queue<int>(); // 이렇게 하면 queue가 Clearing된다.
+cout << Q.front() << endl; // 오류가 발생한다. 왜? 큐가 empty하니까.
 ```
