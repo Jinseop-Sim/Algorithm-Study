@@ -31,7 +31,7 @@ void safe_pop(stack<type> &s){
 }
 ```
 
-## Copy Stack
+### Copy Stack
 ```C++
 stack <string> cards;
 stack <string> another;
@@ -39,7 +39,7 @@ another = cards;
 ```
 - Stack은 위와 같이 Copy가 가능하다.
 
-## Print Stack ?
+### Print Stack ?
 ```C++
 template <typename T>
 ostream & operator << (ostream & os, stack<T> my_stack){
@@ -61,6 +61,15 @@ cout << "\n mys stack : " << mys; // 50 5 11 70 8 19 10 34
 ```
 - 위와 같이 __Operator Overloading__ 을 통해서 ```<<``` 연산자로 출력되지 않는 Container을 가능하게 만든다.
 
+### Stack Clearing
+```C++
+stack<int> myS;
+myS.push(11);
+myS.push(12);
+
+myS = stack<int>(); // Queue와 같이 Clearing이 가능하다.
+cout << myS.empty() << endl; // 1(true)
+```
 ## Stack Variation
 ### Vector in Stack
 ```C++
