@@ -4,48 +4,47 @@
 #include <cmath>
 using namespace std;
 
-vector <string> BST(50, "0");
+vector<string> BST(100000,"0");
 bool root = true;
 int crit = 1;
 int token(string command) {
 	vector<string> op = { "+", "-", "depth", "leaf", "quit" };
-	for (int i = 0; i < op.size(); i++)
+	for (int i=0; i<op.size(); i++)
 		if (command == op[i]) return i + 1;
 }
+void find_left(int idx, vector<string>& min_max) {
+	if (min_max[0]<BST[idx]) min_max[0] = BST[idx];
+	if (BST[idx*2]=="0"&&BST[idx*2+1]=="0") return;
+	find_left(idx*2, min_max);
+	find_left(idx*2 + 1, min_max);
+}
+void find_right(int idx, vector<string>& min_max) {
+	if (min_max[1]>BST[idx])
+		if(BST[idx]!="0") min_max[1]=BST[idx];
+	if (BST[idx*2]=="0"&&BST[idx*2+1] == "0") return;
+	find_right(idx*2, min_max);
+	find_right(idx*2+1, min_max);
+}
 string find_min(int start) {
-	string min_str = "zzz";
-	string max_str = "aaa";
-	if (BST[start * 2] != "0") {
-		for (int i = start*2; i < BST.size(); i = i * 2) {
-			if (BST[i] != "0") {
-				if (min_str > BST[i]) min_str = BST[i];
-			}
-			if (BST[i * 2] == "0" && BST[i * 2 + 1] == "0") break;
-		}
-		return min_str;
+	vector<string> min_max = {"aaa","zzz"};
+	if (BST[start*2] != "0") {
+		find_left(start*2, min_max);
+		return min_max[0];
 	}
 	else {
-		for (int i = start; i < BST.size(); i = (i * 2) + 1) {
-			if (BST[i] != "0") {
-				if (max_str < BST[i]) max_str = BST[i];
-			}
-			if (BST[i * 2] == "0" && BST[i * 2 + 1] == "0") break;
-		}
-		return max_str;
+		find_right(start*2+1, min_max);
+		return min_max[1];
 	}
 }
 void cmp_name(int sub, string node_name) {
 	if (BST[sub] == "0") {
-		crit = sub;
+		crit=sub;
 		return;
 	}
-	if (BST[sub] >= node_name) cmp_name(sub * 2, node_name);
-	else cmp_name(sub * 2 + 1, node_name);
-
+	if (BST[sub] >= node_name) cmp_name(sub*2, node_name);
+	else cmp_name(sub*2+1, node_name);
 }
 void push_node(string node_name) {
-	int sub = 1;
-	bool exist = false;
 	for (int i = 0; i < BST.size(); i++)
 		if (BST[i] == node_name) return;
 	if (root == true) {
@@ -54,32 +53,44 @@ void push_node(string node_name) {
 	}
 	else {
 		crit = 1;
-		cmp_name(sub, node_name);
+		cmp_name(1, node_name);
 		BST[crit] = node_name;
-		cout << crit << endl;
 	}
 }
+void inner_node_change(int idx) {
+	int c_idx = 0;
+	string min_str = find_min(idx);
+	for (int i = 0; i < BST.size(); i++) {
+		if (BST[i] == min_str) {
+			c_idx = i;
+			break;
+		}
+	}
+	swap(BST[idx], BST[c_idx]);
+	if (BST[idx*2] == "0" && BST[idx*2+1] == "0") return;
+	inner_node_change(c_idx);
+}
 void pop_node(string node_name) {
-	int idx = 0, min_idx = 0, max_idx = 0;
-	for (int i = 0; i < BST.size(); i++){
+	int idx = 0, c_idx = 0;
+	for (int i = 0; i < BST.size(); i++) {
 		if (BST[i] == node_name) {
 			idx = i;
 		}
 	}
+	if (idx == 0) return;
 	BST[idx] = "0";
 	string min_str = find_min(idx);
-	cout << min_str << endl;
 	for (int i = 0; i < BST.size(); i++) {
 		if (BST[i] == min_str) {
-			min_idx = i;
+			c_idx = i;
 			break;
 		}
 	}
-	cout << BST[idx] << " " << BST[min_idx] << endl;
-	swap(BST[idx], BST[min_idx]);
+	swap(BST[idx], BST[c_idx]);
+	inner_node_change(c_idx);
 }
 void show_depth(int k) {
-	for (int i = pow(2, k) - pow(2, k - 1); i < pow(2, k); i++) {
+	for (int i = pow(2,k) - pow(2,k-1); i < pow(2,k); i++) {
 		if (BST[i] != "0") cout << BST[i] << " ";
 	}
 	cout << endl;
@@ -89,7 +100,7 @@ void show_leaf() {
 		if (i * 2 >= BST.size()) {
 			break;
 		}
-		if (BST[i * 2] == "0" && BST[i * 2 + 1] == "0")
+		if (BST[i*2] == "0" && BST[i*2+1] == "0")
 			if (BST[i] != "0") cout << BST[i] << " ";
 	}
 	cout << endl;
@@ -117,6 +128,5 @@ int main() {
 			stop = true; break;
 		}
 	}
-	for (auto i : BST) cout << i << " ";
 	return 0;
 }
