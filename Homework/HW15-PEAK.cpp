@@ -51,8 +51,8 @@ void find_answer(int max_cnt) {
 		}
 	}
 	for (int i = 0; i < answer_list.size(); i++) {
-		if (abs(answer_list[i].first - answer_list[i].second) >= diff) {
-			diff = abs(answer_list[i].first - answer_list[i].second);
+		if (answer_list[i].second - answer_list[i].first >= diff) {
+			diff = answer_list[i].second - answer_list[i].first;
 			answer = { answer_list[i].first, answer_list[i].second };
 		}
 	}
