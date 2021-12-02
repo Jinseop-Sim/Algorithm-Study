@@ -81,6 +81,28 @@
 
 - 위 그림과 같이 빈 node 없이 모두 꽉꽉 채워진 BT를 Full BT(포화 이진 트리) 라고 한다.
 
+### Representation of BT
+- 이진 트리는 Degree가 모두 동일하기 때문에, 수식으로 각 Node에 접근이 가능하다.
+- 따라서 Tree 형태로 만들 수도 있지만, 배열에 집어넣어 Index를 이용해 Tree 구조를 표현할 수가 있다!  
+![image](https://user-images.githubusercontent.com/71700079/144422874-87493d21-a45b-4a71-8472-6571824ec518.png)  
+
+- 위와 같이 Index를 가질 수 있다.
+  - Left Child : curr_idx*2
+  - Rigth Child : curr_idx*2 + 1
+  - Parent : curr_idx/2
+
+### Traversal of BT
+- Postorder(전위 순회) : Root를 가장 마지막에 방문한다.
+  - Left => Right => Root 순으로 방문하는 것.  
+  
+- Preorder(후위 순회) : Root를 가장 먼저 방문한다.
+  - Root => Left => Right 순으로 방문하는 것.  
+  
+- Inorder(중위 순회) : Root를 중간에 방문한다.
+  - Left => Root => Right 순으로 방문하는 것.  
+
+- 반복적 중위 순회 : BFS와 같은 동작을 보인다.
+
 ### Calculate Size : Pseudo code
 ```C++
 int tSize(int T){
@@ -99,10 +121,6 @@ int tDepth(int T){
   }
 ```
 - 모든 연산을 왼쪽 오른쪽 부트리에 Recursive하게 타고 들어가는 방식을 이용한다.
-
-### Representation of BT
-- 이진 트리는 Degree가 모두 동일하기 때문에, 수식으로 각 Node에 접근이 가능하다.
-- 따라서 Tree 형태로 만들 수도 있지만, 배열에 집어넣어 Index를 이용해 Tree 구조를 표현할 수가 있다!
 
 ## Quad Tree  
 > 특이한 형태의 트리 구조이며, 보통 이미지 파일을 압축할 때 이용하는 방식이다.  
