@@ -20,7 +20,7 @@
   - Buffering : 입력될 때마다 바로 넣는 것이 아닌, 몇 개씩 모였을 때(__in Buffer__) 순서를 적절히 정렬해 입력한다.
 
 ## HBT : AVL Tree
-> Adelson-Velskii와 Landis가 제안한 높이 균형 트리의 구조.  
+> Adelson-Velskii와 Landis가 제안한 Binary Tree 기반의 높이 균형 트리의 구조.  
 > 왼쪽 부트리와 오른쪽 부트리의 차이가 1보다 커질 수 없다.  
 
 ![image](https://user-images.githubusercontent.com/71700079/144436693-bb1203c3-dc74-4085-8896-f38014f6c7cd.png)  
