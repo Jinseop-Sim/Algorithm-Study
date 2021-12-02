@@ -80,5 +80,9 @@
 - 과정을 도식화 하면 이와 같다.
 ![image](https://user-images.githubusercontent.com/71700079/144411536-f20b9191-5e1c-483f-837e-e01d28cb47f9.png)  
 
+- Quad Tree의 장점?
+  - 이미지의 회전을 할 때, Bit로 일일이 다 회전시키기에는 매우 어렵다.
+  - 이 때, Quad Tree의 Subtree를 Swap함으로써 이미지를 회전을 시킬 수가 있다.
+
 ## Red-Black Tree
 ## AVL Tree
