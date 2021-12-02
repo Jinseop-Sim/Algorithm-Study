@@ -36,6 +36,9 @@
 - 트리 T의 모든 Node를 출력하라.
 - LCA(Least Common Ancestor)
 
+## Equivalence of Tree?
+> __Canonical Ordering(표준 정렬)__ 을 한 결과가 같으면 같은 Tree이다.  
+
 ## Representation of Tree Structure
 ### Parenthesis List
 > 어떤 Tree가 있을 때 이를 가시적으로 보여주기 위해서 보통 괄호 리스트를 사용한다.  
@@ -69,6 +72,9 @@
 > Tree의 차수(자식의 최대 수)가 2로 Fixed된 트리이다.  
 > 이진 탐색 트리를 주로 사용하는 이유는, Degree가 2밖에 되지 않아 구조를 만들기 편하기 때문이다.  
 
+- 이진 탐색 트리가 탐색에 용이한 이유는, Root가 중간 값이 되기 때문이다.
+- Vector에 집어 넣은 뒤, Binary Search를 하는 것과 같은 효과를 낼 수 있다는 말이다.
+
 ### Complete Binary Tree
 ![image](https://user-images.githubusercontent.com/71700079/144414294-e9120d10-c111-4af2-8a69-fa317e20cb70.png)  
 
@@ -91,6 +97,9 @@
   - Rigth Child : curr_idx*2 + 1
   - Parent : curr_idx/2
 
+### Catalan Number
+> 이진 트리의 갯수는 Catalan Number(n) = 2n C n / n+1을 따른다.  
+
 ### Traversal of BT
 - Postorder(전위 순회) : Root를 가장 마지막에 방문한다.
   - Left => Right => Root 순으로 방문하는 것.  
@@ -101,7 +110,7 @@
 - Inorder(중위 순회) : Root를 중간에 방문한다.
   - Left => Root => Right 순으로 방문하는 것.  
 
-- 반복적 중위 순회 : BFS와 같은 동작을 보인다.
+- 반복적 중위 순회(Level Order) : BFS와 같은 동작을 보인다.
 
 ### Calculate Size : Pseudo code
 ```C++
@@ -136,9 +145,3 @@ int tDepth(int T){
 - Quad Tree의 장점?
   - 이미지의 회전을 할 때, Bit로 일일이 다 회전시키기에는 매우 어렵다.
   - 이 때, Quad Tree의 Subtree를 Swap함으로써 이미지를 회전을 시킬 수가 있다.
-
-## Red-Black Tree
-## AVL Tree
-
-## Equivalence of Tree?
-> __Canonical Ordering(표준 정렬)__ 을 한 결과가 같으면 같은 Tree이다.
