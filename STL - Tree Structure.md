@@ -36,6 +36,34 @@
 - 트리 T의 모든 Node를 출력하라.
 - LCA(Least Common Ancestor)
 
+## Representation of Tree Structure
+### Parenthesis List
+> 어떤 Tree가 있을 때 이를 가시적으로 보여주기 위해서 보통 괄호 리스트를 사용한다.  
+- 장점 : 구현이 간단하다.
+- 단점 : 동작이 매우 한정적이다.
+- Example 
+  - (R(P1)(P2)(P3)), 이는 Root로 R을 가지고 자식으로 P1, P2, P3의 Leaf Node를 갖는 Tree이다.
+  - (a(g)(f(c(h)(j))(d))(b(e))), 이를 Tree로 그리면 아래와 같다.  
+  ![image](https://user-images.githubusercontent.com/71700079/144406488-6592e50f-2e85-4a7f-a516-9dbc471a63c6.png)   
+
+### Array + Parents Link
+![image](https://user-images.githubusercontent.com/71700079/144408644-d5705649-30af-4a4c-8346-e3228993e57a.png)  
+![image](https://user-images.githubusercontent.com/71700079/144408775-28fc7be3-c2c7-421d-b352-aefaa70172e5.png)  
+- 위의 표(Array)와 Tree는 같은 Structure을 표현한다.
+- 자식 Node까지 배열에 저장을 해두면 더 용이하게 Structure을 사용할 수 있다.
+  - 보통 Struct(구조체)를 이용해서 정보들을 저장해서 Vector에 ```push_back()``` 한다.
+  - 하지만 좋은 자료구조는, 모든 Index에 대해서 같은 형태를 갖는게 좋은 자료구조이다!
+- 장점 : 괄호 표현법 보다는 더 많은 동작을 구현할 수 있다.
+- 단점 : 괄호 표현법 보다는 구현이 어렵다.
+
+### Real Tree
+- 진짜 Tree의 모양을 내가 만드는 것이다.
+- Example : 4 Degree Tree  
+![image](https://user-images.githubusercontent.com/71700079/144410083-63c83873-753a-4a03-8b94-9aa8825a4d55.png)  
+
+- 가장 보편적인 형태로 사용하는 자료 구조이다.
+- 각 Node에는 부모를 가리키는 Node를 하나 더 만들어 놓았는데, 이는 Stack을 사용해서 부모를 저장한다면 필요가 없는 부분이다.
+
 ## Binary Search Tree
 > 이진 탐색 트리라고 하며, 가장 흔한 형태의 트리이다.  
 > Tree의 차수(자식의 최대 수)가 2로 Fixed된 트리이다.  
