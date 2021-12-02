@@ -19,7 +19,7 @@
   
   - Buffering : 입력될 때마다 바로 넣는 것이 아닌, 몇 개씩 모였을 때(__in Buffer__) 순서를 적절히 정렬해 입력한다.
 
-## HBT - AVL Tree
+## HBT : AVL Tree
 > Adelson-Velskii와 Landis가 제안한 높이 균형 트리의 구조.  
 > 왼쪽 부트리와 오른쪽 부트리의 차이가 1보다 커질 수 없다.  
 
@@ -41,4 +41,4 @@
 - 더 자세한 원리의 이해를 돕기 위해 아래의 링크를 들어가서 공부하자.
 - [AVL Tree 도식화](https://github.com/Jinseop-Sim/PNU-Algorithm-Study/blob/main/TIP/AVL%20Tree%20%EB%8F%84%EC%8B%9D%ED%99%94.md)
 
-## HBT - Red-Black Tree
+## HBT : Red-Black Tree
