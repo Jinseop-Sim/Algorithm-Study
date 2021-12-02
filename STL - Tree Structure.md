@@ -65,9 +65,39 @@
 - 각 Node에는 부모를 가리키는 Node를 하나 더 만들어 놓았는데, 이는 Stack을 사용해서 부모를 저장한다면 필요가 없는 부분이다.
 
 ## Binary Search Tree
-> 이진 탐색 트리라고 하며, 가장 흔한 형태의 트리이다.  
+> 이진 탐색 트리라고 하며, 가장 흔한 형태의 트리로 Regular Tree의 일종이다.  
 > Tree의 차수(자식의 최대 수)가 2로 Fixed된 트리이다.  
 > 이진 탐색 트리를 주로 사용하는 이유는, Degree가 2밖에 되지 않아 구조를 만들기 편하기 때문이다.  
+
+### Complete Binary Tree
+![image](https://user-images.githubusercontent.com/71700079/144414294-e9120d10-c111-4af2-8a69-fa317e20cb70.png)  
+
+- 위 그림과 같이 왼쪽부터 순서에 맞게 채워져 있는 BT를 Complete BT라고 한다.
+- 순서에 맞지 않게 왼쪽 자식이 비었는데, 오른쪽 자식이 채워져 있거나 하면 완전 이진 트리가 될 수 없다.
+
+### Full Binary Tree
+![image](https://user-images.githubusercontent.com/71700079/144414473-c76d75ef-0598-4613-a1e5-f1362248670c.png)  
+
+- 위 그림과 같이 빈 node 없이 모두 꽉꽉 채워진 BT를 Full BT(포화 이진 트리) 라고 한다.
+
+### Calculate Size : Pseudo code
+```C++
+int tSize(int T){
+  if (T == 0) return 0;
+  return tSize(T.left_sub_tree) + tSize(T.right_sub_tree);
+}
+```
+### Calculate Depth : Pseudo code
+```C++
+int tDepth(int T){
+  if (T == 0) return 0;
+  else{
+    a = tDepth(T.right_sub_tree);
+    b = tDepth(T.left_sub_tree);
+    return (max({a, b}) + 1);
+  }
+```
+- 모든 연산을 왼쪽 오른쪽 부트리에 Recursive하게 타고 들어가는 방식을 이용한다.
 
 ## Quad Tree  
 > 특이한 형태의 트리 구조이며, 보통 이미지 파일을 압축할 때 이용하는 방식이다.  
@@ -86,3 +116,6 @@
 
 ## Red-Black Tree
 ## AVL Tree
+
+## Equivalence of Tree?
+> __Canonical Ordering(표준 정렬)__ 을 한 결과가 같으면 같은 Tree이다.
