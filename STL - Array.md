@@ -100,4 +100,11 @@ int main(){
 - 위의 경우에는 ```i[1] < j[1]``` 이라는 조건을 통해서 5개의 array를 1번째 원소 크기를 기준으로 오름차순 정렬을 했음을 알 수 있다.
 - 물론 ```i[1] > j[1]``` 로 바뀔 경우, 내림차순으로 정렬된다.
 
-
+## Bonus : Container별 속도 비교
+- Generic Sort Algorithm
+  - Vector에서의 Generic Sort는 __O(NlogN)__ 의 복잡도를 가지는데, Rough 하게 거의 __O(N)__ 이라고 봐도 무방하다.
+- Insertion
+  - ```Vector.begin()``` >>>>>> ```list.begin()``` == ```list.back()``` > ```vector.back()```
+  - 벡터는 기본적으로 ```push_back()``` 을 사용하므로, 제일 앞에 집어 넣는 것은 시간이 많이 소요된다.
+- Reversing
+  - Array > Vector > Deque > List
