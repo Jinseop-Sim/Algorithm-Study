@@ -67,8 +67,18 @@
 ## Binary Search Tree
 > 이진 탐색 트리라고 하며, 가장 흔한 형태의 트리이다.  
 > Tree의 차수(자식의 최대 수)가 2로 Fixed된 트리이다.  
+> 이진 탐색 트리를 주로 사용하는 이유는, Degree가 2밖에 되지 않아 구조를 만들기 편하기 때문이다.  
 
 ## Quad Tree  
-> 특이한 형태의 트리 구조이며, 이미지 파일을 텍스트로 압축할 때 이용하는 방식이다.  
+> 특이한 형태의 트리 구조이며, 보통 이미지 파일을 압축할 때 이용하는 방식이다.  
+
+- Example
+![image](https://user-images.githubusercontent.com/71700079/144411079-ae6e0881-5060-47f6-86f9-04bc421d004b.png)  
+
+- 위와 같은 image가 존재한다고 가정 했을 때, 색칠 된 부분을 1로 생각한다(Bitmap).
+- 그리고 좌표계와 동일하게 1 2 3 4 분면의 값을 검사해서 Tree로 만드는 것이다.
+- 과정을 도식화 하면 아래와 같다.
+![image](https://user-images.githubusercontent.com/71700079/144411536-f20b9191-5e1c-483f-837e-e01d28cb47f9.png)  
+
 ## Red-Black Tree
 ## AVL Tree
