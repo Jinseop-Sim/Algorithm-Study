@@ -38,5 +38,7 @@
 - 위 그림과 같이 Tree를 회전을 시켜 Balance를 맞춰줄 수 있다(LL case).
 - 당연히 반대편으로 회전을 시킬 수도 있다.
 - 가운데 값을 Root로 올리고, 원래 Root를 회전 방향의 자식 노드로 집어 넣는 방식이다.
+- 더 자세한 원리의 이해를 돕기 위해 아래의 링크를 들어가서 공부하자.
+- [AVL Tree 도식화](https://github.com/Jinseop-Sim/PNU-Algorithm-Study/blob/main/TIP/AVL%20Tree%20%EB%8F%84%EC%8B%9D%ED%99%94.md)
 
 ## HBT - Red-Black Tree
