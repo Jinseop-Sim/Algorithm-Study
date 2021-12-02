@@ -74,6 +74,7 @@
 
 - 위 그림과 같이 왼쪽부터 순서에 맞게 채워져 있는 BT를 Complete BT라고 한다.
 - 순서에 맞지 않게 왼쪽 자식이 비었는데, 오른쪽 자식이 채워져 있거나 하면 완전 이진 트리가 될 수 없다.
+- 배열로 구조를 작성했을 때, 빈칸 없이 작성할 수 있다.
 
 ### Full Binary Tree
 ![image](https://user-images.githubusercontent.com/71700079/144414473-c76d75ef-0598-4613-a1e5-f1362248670c.png)  
@@ -98,6 +99,10 @@ int tDepth(int T){
   }
 ```
 - 모든 연산을 왼쪽 오른쪽 부트리에 Recursive하게 타고 들어가는 방식을 이용한다.
+
+### Representation of BT
+- 이진 트리는 Degree가 모두 동일하기 때문에, 수식으로 각 Node에 접근이 가능하다.
+- 따라서 Tree 형태로 만들 수도 있지만, 배열에 집어넣어 Index를 이용해 Tree 구조를 표현할 수가 있다!
 
 ## Quad Tree  
 > 특이한 형태의 트리 구조이며, 보통 이미지 파일을 압축할 때 이용하는 방식이다.  
