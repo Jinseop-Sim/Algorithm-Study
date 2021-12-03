@@ -1,7 +1,10 @@
-# PQ(Priority Queue)
+# PQ(Priority Queue) & Heap
 ---
 ## What is PQ?
 > 우선순위에 따라서 Queue의 값을 뽑아 내는 특별한 Queue이다.  
+
+## What is Heap?
+> Heap은 PQ의 종류 중 하나로, Array로 PQ를 구현해 놓은 것을 말한다.  
 
 ## PQ in C++
 > C++에서는 __Queue Header__ 에 PQ가 내장이 되어 있다.  
