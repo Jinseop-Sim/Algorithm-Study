@@ -17,7 +17,7 @@
 > Binary Tree를 기반으로 한다.  
 
 ### Heapify(Make Heap)
-
+- [Heapify 과정 도식화](https://github.com/Jinseop-Sim/PNU-Algorithm-Study/blob/main/TIP/Heapify%20%EA%B3%BC%EC%A0%95.md)
 
 ### Min Heap
 > Complete Tree에서, 모든 Tree(Subtree들 포함)의 Root는 항상 최솟값이 되는 Tree.  
