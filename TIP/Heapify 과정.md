@@ -8,6 +8,6 @@
 
 ![min heap 2](https://user-images.githubusercontent.com/71700079/144562444-d9351dab-d17b-4859-8d1d-4d117f02d821.png)  
 
-- 3번째 과정  
+- 3번째 과정(완성)  
 
 ![min heap 3](https://user-images.githubusercontent.com/71700079/144562446-f9d0d841-6ed3-4703-abae-f0c1e2503ad7.png)  
