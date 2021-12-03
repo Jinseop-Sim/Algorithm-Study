@@ -14,10 +14,8 @@
 ## Heap
 ### What is Heap?
 > Heap은 PQ의 종류 중 하나로, Array로 PQ를 구현해 놓은 것을 말한다.  
-> Binary Tree를 기반으로 한다.  
-
-### Heapify(Make Heap)
-- [Heapify 과정 도식화](https://github.com/Jinseop-Sim/PNU-Algorithm-Study/blob/main/TIP/Heapify%20%EA%B3%BC%EC%A0%95.md)
+> Binary Tree를 기반으로 하는데, 왼쪽 오른쪽 부트리에 순서 구분이 없다.  
+> 즉 특정한 원소를 찾는 일은 의미가 없다.     
 
 ### Min Heap
 > Complete Tree에서, 모든 Tree(Subtree들 포함)의 Root는 항상 최솟값이 되는 Tree.  
@@ -28,6 +26,9 @@
   - 기본적으로 Heap이며, (Heapify, Make Heap)
   - Min은 무조건 Root의 값이고 제일 아래의 leaf를 검사해 Max도 얻을 수 있다.
   - Min(Max) 값을 Pop한 뒤 Re-adjust(빈 자리 채우기)가 가능하다.
+
+### Heapify(Make Min Heap)
+- [Heapify 과정 도식화](https://github.com/Jinseop-Sim/PNU-Algorithm-Study/blob/main/TIP/Heapify%20%EA%B3%BC%EC%A0%95.md)
 
 ## PQ in C++
 > C++에서는 __Queue Header__ 에 PQ가 내장이 되어 있다.  
