@@ -4,8 +4,30 @@
 > 우선순위에 따라서 Queue의 값을 뽑아 내는 특별한 Queue이다.  
 > 예를 들어 OS에서의 Task 처리 방식이 Priority에 따라 처리를 하는데, 이런 것이 PQ의 대표적 예시이다.  
 
-## What is Heap?
+## Basic operation of PQ
+- PQ에서 지원해야하는 가장 기본적인 Opertation.
+  - Heapify(Make Heap)
+  - Get Max(Min)
+  - Insert new node
+  - Get Max and re-adjust
+
+## Heap
+### What is Heap?
 > Heap은 PQ의 종류 중 하나로, Array로 PQ를 구현해 놓은 것을 말한다.  
+> Binary Tree를 기반으로 한다.  
+
+### Heapify(Make Heap)
+
+
+### Min Heap
+> Complete Tree에서, 모든 Tree(Subtree들 포함)의 Root는 항상 최솟값이 되는 Tree.  
+![image](https://user-images.githubusercontent.com/71700079/144560225-4da4478e-bd11-4359-8cc4-bca551946ef8.png)  
+
+- Min Heap은 보통 __Partially Sorted Tree__ 이다.
+- 이 구조의 기능적 면만 본다면, PQ와 유사하다.
+  - 기본적으로 Heap이며, (Heapify, Make Heap)
+  - Min은 무조건 Root의 값이고 제일 아래의 leaf를 검사해 Max도 얻을 수 있다.
+  - Min(Max) 값을 Pop한 뒤 Re-adjust(빈 자리 채우기)가 가능하다.
 
 ## PQ in C++
 > C++에서는 __Queue Header__ 에 PQ가 내장이 되어 있다.  
