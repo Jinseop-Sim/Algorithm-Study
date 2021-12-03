@@ -47,3 +47,15 @@
 
 ![image](https://user-images.githubusercontent.com/71700079/144452449-2694d622-3a41-46ac-b9ed-29e5fb29ca89.png)  
 
+- 사전이나, 주소 찾기에 사용되는 자료구조이다.
+- 일반적인 Tree는 Key 전체를 찾아 자료를 찾는 구조이지만, Trie는 Key의 일부만 보고 찾아낼 수 있다.
+
+### Digital Search Tree
+> Bit(0 and 1) 가 Key가 되는 경우의 Tree 구조이다.  
+
+- Key의 Bit가 1이면 오른쪽 부트리로, Bit가 0이면 왼쪽 부트리로 내려 보낸다.
+- 아래와 같은 구조를 가지며, Trie구조의 Bit 버전이라고 생각하면 된다.  
+![image](https://user-images.githubusercontent.com/71700079/144535160-ac999cdf-a4ca-49aa-b93b-b3e835b3fc94.png)  
+
+
+
