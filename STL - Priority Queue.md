@@ -75,3 +75,19 @@ priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> pq;
 ```
 
 ## Bonus : Binomial Heap
+### DEAP(Double Ended heAP)
+> DEAP, 양방향 최대 최소 큐는 Root가 비어있는 Complete Tree이다.  
+- 다음과 같은 성질을 만족한다.
+  - Root는 항상 비어있다.
+  - Root의 왼쪽은 min heap이다.
+  - Root의 오른쪽은 max heap이다.
+
+### Binomial Tree
+> Binomial Tree, 이항 트리는 차수가 올라가면 이전 차수의 Tree와 결합을 하는 특이한 Tree이다.  
+
+![image](https://user-images.githubusercontent.com/71700079/144569203-1ea2f0d7-b2c2-441e-8502-6119c583cf6e.png)  
+
+- 위 그림과 같은 형태로 차수가 증가한다.  
+
+### Binomial Heap
+> Binomial Heap, 이항 힙은 Binomial Tree(이항 트리)가 결합된 구조를 갖는다.  
