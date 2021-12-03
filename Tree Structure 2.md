@@ -42,12 +42,13 @@
 - [AVL Tree 도식화](https://github.com/Jinseop-Sim/PNU-Algorithm-Study/blob/main/TIP/AVL%20Tree%20%EB%8F%84%EC%8B%9D%ED%99%94.md)
 
 ## Trie
-> 문자열을 탐색할 때 주로 사용하는 구조인 Trie(트라이)이다.  
+> 문자열을 탐색할 때 주로 사용하는 구조인 __Trie(트라이)__ 이다.  
 > String이 Key가 되는 경우에는 String에 Radix로 접근이 가능하기 때문에 이런 구조를 만들 수 있다.  
 > 루트에서부터 자식으로 가면서 단어를 만들 수 있도록 문자열이 각 node에 저장이 된다.  
 
 ![image](https://user-images.githubusercontent.com/71700079/144452449-2694d622-3a41-46ac-b9ed-29e5fb29ca89.png)  
 
+- 위와 같은 형태로 단어가 저장된다(__Radix String Tree__).
 - 사전이나, 주소 찾기에 사용되는 자료구조이다.
 - 일반적인 Tree는 Key 전체를 찾아 자료를 찾는 구조이지만, Trie는 Key의 일부만 보고 찾아낼 수 있다.
 
