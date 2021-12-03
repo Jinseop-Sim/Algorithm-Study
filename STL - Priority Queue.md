@@ -2,6 +2,7 @@
 ---
 ## What is PQ?
 > 우선순위에 따라서 Queue의 값을 뽑아 내는 특별한 Queue이다.  
+> 예를 들어 OS에서의 Task 처리 방식이 Priority에 따라 처리를 하는데, 이런 것이 PQ의 대표적 예시이다.  
 
 ## What is Heap?
 > Heap은 PQ의 종류 중 하나로, Array로 PQ를 구현해 놓은 것을 말한다.  
