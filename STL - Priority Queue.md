@@ -37,6 +37,9 @@
 
 priority_queue<int> pq; // 이게 기본적으로 정의하는 형태이다.
 priority_queue<int, vector<int>, greater<int>> pq2; // 이게 완전한 PQ의 형태이다.
+
+int thedata[] = {145, 234, 112, 88, 56};
+priority_queue<int> pq (thedata, thedata+4); // 이런 특별한 형태로도 PQ의 선언이 가능하다.
 ```
 - __우선순위 큐__ 는 간단하게 내부 Elements의 Type만 선언해서 선언을 할 수도 있으며
 - 그 아래의 선언문과 같이 자세하게 선언을 할 수 있다.
@@ -49,6 +52,7 @@ pq.pop() // 우선순위에 따라 가장 우선순위가 높은(제일 앞의) 
 pq.top() // 우선순위에 따라 가장 우선순위가 높은(제일 앞의) 원소를 반환한다.(삭제 X)
 pq.empty() // 우선순위가 비었는지 판단한 뒤 bool로 반환한다. 보통 while문과 함께 사용된다.
 pq.size() // 우선순위 큐의 크기를 반환한다.
+pq.emplace() // 2차원 벡터를 예로 들면, 임시 벡터를 만들어 push_back을 하는 경우가 있는데 그 과정을 생략해준다.
 ```
 ## Compare Structure
 > 위의 예시를 보면, __비교 함수 구조체__ 라는 말이 들어가는데,  
