@@ -43,6 +43,7 @@
 
 ## Trie
 > 문자열을 탐색할 때 주로 사용하는 구조인 Trie(트라이)이다.  
+> String이 Key가 되는 경우에는 String에 Radix로 접근이 가능하기 때문에 이런 구조를 만들 수 있다.  
 > 루트에서부터 자식으로 가면서 단어를 만들 수 있도록 문자열이 각 node에 저장이 된다.  
 
 ![image](https://user-images.githubusercontent.com/71700079/144452449-2694d622-3a41-46ac-b9ed-29e5fb29ca89.png)  
@@ -53,9 +54,21 @@
 ### Digital Search Tree
 > Bit(0 and 1) 가 Key가 되는 경우의 Tree 구조이다.  
 
-- Key의 Bit가 1이면 오른쪽 부트리로, Bit가 0이면 왼쪽 부트리로 내려 보낸다.
-- 아래와 같은 구조를 가지며, Trie구조의 Bit 버전이라고 생각하면 된다.  
-![image](https://user-images.githubusercontent.com/71700079/144535160-ac999cdf-a4ca-49aa-b93b-b3e835b3fc94.png)  
+- Key의 depth번째 Bit가 0이면 왼쪽 부트리에 저장, 1이면 오른쪽 부트리에 저장한다.
+- 아래와 같은 구조를 가지며, 조금 비효율적인 Trie 구조라고 보면 된다.
+- Key의 길이가 길어지면 저장하는 데에 시간이 오래걸리기 때문이다.  
+![image](https://user-images.githubusercontent.com/71700079/144535759-c99b2c08-978a-4b9b-8a3f-71bbad132330.png)  
 
+### Suffix Tree
+> Suffix는 접미사 라는 뜻으로, 접미사들을 Tree의 path에 저장해두고 탐색 효율을 높이는 고급 자료 구조이다.  
+
+- Suffix : 예를 들어, Beerbox의 Suffix는 {Beerbox, eerbox, erbox, rbox, box, ox, x} 가 된다.
+  - 이를 Sort(Alphabetical Order) 를 해서 배열에 저장을 해놓은 것을 보통 __Suffix Array__ 라고 부른다.
+  - 뒤에서 부터 알파벳을 세어 각 Suffix의 Index를 저장해 놓으면, 편하게 단어를 찾을 수 있다.  
+  ![image](https://user-images.githubusercontent.com/71700079/144537466-0e1e6acb-002b-43fd-8522-0b3bae01f4b9.png)  
+  
+  - 예를 들어 'rbo' 라는 단어를 검색하면 4번 index와 3번 index에 모두 존재하므로 둘이 출력될 것이다.
+    - 이런 형태를 보면 주소 찾기에 응용이 가능하다는 점을 알 수 있다.
+  
 
 
