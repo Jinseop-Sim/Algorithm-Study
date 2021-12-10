@@ -12,7 +12,7 @@ void store_sentece(int n) {
 		vector<char> temp;
 		while (sentence != '$') {
 			cin >> sentence;
-			if ((int)sentence < 32 || (int)sentence > 126) {
+			if ((int)sentence < 0 || (int)sentence > 126) {
 				temp.push_back(sentence);
 			}
 		}
