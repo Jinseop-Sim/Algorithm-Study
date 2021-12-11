@@ -32,3 +32,6 @@
 - Tree 구조를 예시로 생각해보면 그 동작은 아래와 같다.  
 ![img](https://user-images.githubusercontent.com/71700079/144698180-dfbe13ad-a1cb-4afe-9dbc-77b2cae1edca.gif)  
 
+## Shortest Path Problem
+### Dijkstra Algorithm
+> Dijkstra(다익스트라) 알고리즘은, 
