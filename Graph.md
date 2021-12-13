@@ -51,5 +51,9 @@
 > Dijkstra(다익스트라) 알고리즘은, Shortest Path를 구하는데에 가장 널리 사용되는 방식이다.  
 - Source에서 부터 Shortest Path Tree를 만들어 나가는 방식이다.
   1. 먼저 Source를 하나 정한다.
-  2. 그 다음 후보 Edge 끝에 걸친 Vertex 중에 가장 Cost가 작은 Vertex를 고른다. ==> PQ 이용 
+  2. 그 다음 후보 Edge 끝에 걸친 Vertex 들을 모두 PQ에 집어 넣는다.
+  3. PQ 중 top은 Cost가 가장 작은 Vertex가 될 것. ```pop()``` 한다.
+  4. 다음 후보 Edge들을 넣을 때, Pop한 Vertex의 Cost를 더하고 넣는다.
+  5. 목적지 Vertex가 나올 때 까지 반복. 
+
 ### Bellman Ford Algorithm
