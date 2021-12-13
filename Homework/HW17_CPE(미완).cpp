@@ -12,14 +12,11 @@ void store_sentece(int n) {
 		vector<char> temp;
 		while (sentence != '$') {
 			cin >> sentence;
-			if ((int)sentence < 0 || (int)sentence > 126) {
-				temp.push_back(sentence);
-			}
+			if ((sentence & 0x80) != 0) temp.push_back(sentence);
 		}
 		s_group.push_back(temp);
 	}
 }
-
 void make_substring() {
 	string temp;
 	for (int i = 0; i < s_group.size(); i++) {
@@ -28,9 +25,9 @@ void make_substring() {
 		while (true) {
 			temp.push_back(s_group[i][iter]);
 			if (temp.size() == KMER) {
-				temp_sub.push_back(temp); 
+				temp_sub.push_back(temp);
 				temp.clear();
-				if (iter == s_group[i].size()-1) break;
+				if (iter == s_group[i].size() - 1) break;
 				iter--;
 				continue;
 			}
@@ -39,8 +36,7 @@ void make_substring() {
 		substrings.push_back(temp_sub);
 	}
 }
-
-void check_plagiarism(pair<int, int> &plagi_idx) {
+void check_plagiarism(pair<int, int>& plagi_idx) {
 	set<string> solution;
 	int iter = 0, cmp_iter = 0;
 	double plagi = 0.0, max_plagi = 0.0;
@@ -57,7 +53,7 @@ void check_plagiarism(pair<int, int> &plagi_idx) {
 			solution.insert(substrings[cmp_iter][k]);
 		}
 		plagi = (((double)substrings[iter].size() + (double)substrings[cmp_iter].size() - (double)solution.size()) / ((double)substrings[0].size() + (double)substrings[1].size())) * 100;
-		if(plagi > max_plagi){
+		if (plagi > max_plagi) {
 			max_plagi = plagi;
 			plagi_idx.first = iter;
 			plagi_idx.second = cmp_iter;
@@ -66,7 +62,6 @@ void check_plagiarism(pair<int, int> &plagi_idx) {
 		solution.clear();
 	}
 }
-
 int main() {
 	int n;
 	pair<int, int> plagi_idx;
@@ -74,6 +69,6 @@ int main() {
 	store_sentece(n);
 	make_substring();
 	check_plagiarism(plagi_idx);
-	cout << plagi_idx.first+1 << " " << plagi_idx.second+1;
+	cout << plagi_idx.first + 1 << " " << plagi_idx.second + 1;
 	return 0;
 }
