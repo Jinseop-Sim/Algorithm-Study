@@ -32,6 +32,20 @@
 - Tree 구조를 예시로 생각해보면 그 동작은 아래와 같다.  
 ![img](https://user-images.githubusercontent.com/71700079/144698180-dfbe13ad-a1cb-4afe-9dbc-77b2cae1edca.gif)  
 
+## Spanning Tree
+### Minimum Spanning Tree
+- Kruskal's Algorithm(Greedy)
+  1. 모든 Edge를 가중치별로 정렬한다.
+  2. 가중치의 값이 가장 작은 Edge부터 하나씩 추가해서 Graph를 구성한다.
+  3. 구성 과정에서 Cycle이 생기면 그 edge는 버린다.
+  4. 추가된 edge가 V-1개 이면, 작업을 중단하고 결과를 알린다.
+- Prim's Algorithm
+  1. 한 점에서 가장 짧은 Edge를 선택해서 이를 중간 MST라고 생각한다.
+  2. MST에 연결된 후보 edge들 중에서 가장 작은 weight의 edge를 추가한다.
+- Solin's Algorithm
+  1. 일종의 Parallel Time 알고리즘이다.
+  2. 각 {Node, Forest}는 자신의 이웃 중에서 가장 짧은 Edge를 고른다.
+  3. 이 작업중에서 Edge가 Cycle을 만들면 버린다.
 ## Shortest Path Problem
 ### Dijkstra Algorithm
 > Dijkstra(다익스트라) 알고리즘은, 
