@@ -1,65 +1,51 @@
 #include <iostream>
 #include <set>
 #include <vector>
-#define KMER 4
 using namespace std;
 
-vector<vector<char>> s_group;
-vector<vector<string>> substrings;
+vector<string> s_group;
+vector<set<string>> substrings;
+bool flag = true;
 void store_sentece(int n) {
 	for (int i = 0; i < n; i++) {
 		char sentence = '0';
-		vector<char> temp;
-		while (sentence != '$') {
-			cin >> sentence;
-			if ((sentence & 0x80) != 0) temp.push_back(sentence);
-		}
-		s_group.push_back(temp);
-	}
-}
-void make_substring() {
-	string temp;
-	for (int i = 0; i < s_group.size(); i++) {
-		int iter = 0;
-		vector<string> temp_sub;
+		string temp;
 		while (true) {
-			temp.push_back(s_group[i][iter]);
-			if (temp.size() == KMER) {
-				temp_sub.push_back(temp);
-				temp.clear();
-				if (iter == s_group[i].size() - 1) break;
-				iter--;
-				continue;
-			}
-			iter++;
+			cin >> sentence;
+			if (sentence == '$') break;
+			if ((sentence & 0x80) != 0)	temp.push_back(sentence);
 		}
-		substrings.push_back(temp_sub);
+		if (temp.size() != 0) s_group.push_back(temp);
+	}
+	if (s_group.size() <= 1) flag = false;
+}
+void make_substrings() {
+	if (flag == false) return;
+	for (int i = 0; i < s_group.size(); i++) {
+		set<string> temp;
+		for (int j = 0; j < s_group[i].size()-2; j += 2) temp.insert(s_group[i].substr(j, 4));
+		substrings.push_back(temp);
 	}
 }
-void check_plagiarism(pair<int, int>& plagi_idx) {
-	set<string> solution;
-	int iter = 0, cmp_iter = 0;
-	double plagi = 0.0, max_plagi = 0.0;
-	while (true) {
-		if (iter == substrings.size()) break;
-		if (cmp_iter == substrings.size()) {
-			iter++; cmp_iter = iter; continue;
+void compare_plagiarism(pair<int, int> &plagi_idx) {
+	if (flag == false) return;
+	double length_a = 0, length_b = 0, fin_length = 0;
+	double plagi_ratio = 0, max_ratio = 0;
+	for (int i = 0; i < substrings.size(); i++) {
+		set<string> temp;
+		length_a = substrings[i].size();
+		for (int j = i+1; j < substrings.size(); j++) {
+			length_b = substrings[j].size();
+			temp.insert(substrings[i].begin(), substrings[i].end());
+			temp.insert(substrings[j].begin(), substrings[j].end());
+			fin_length = temp.size();
+			plagi_ratio = (length_a + length_b - fin_length) / (length_a + length_b);
+			if (max_ratio < plagi_ratio) {
+				max_ratio = plagi_ratio;
+				plagi_idx.first = i+1; plagi_idx.second = j+1;
+			}
+			temp.clear();
 		}
-		if (iter == cmp_iter) { cmp_iter++; continue; }
-		for (int i = 0; i < substrings[iter].size(); i++) {
-			solution.insert(substrings[iter][i]);
-		}
-		for (int k = 0; k < substrings[cmp_iter].size(); k++) {
-			solution.insert(substrings[cmp_iter][k]);
-		}
-		plagi = (((double)substrings[iter].size() + (double)substrings[cmp_iter].size() - (double)solution.size()) / ((double)substrings[0].size() + (double)substrings[1].size())) * 100;
-		if (plagi > max_plagi) {
-			max_plagi = plagi;
-			plagi_idx.first = iter;
-			plagi_idx.second = cmp_iter;
-		}
-		cmp_iter++;
-		solution.clear();
 	}
 }
 int main() {
@@ -67,8 +53,8 @@ int main() {
 	pair<int, int> plagi_idx;
 	cin >> n;
 	store_sentece(n);
-	make_substring();
-	check_plagiarism(plagi_idx);
-	cout << plagi_idx.first + 1 << " " << plagi_idx.second + 1;
+	make_substrings();
+	compare_plagiarism(plagi_idx);
+	cout << plagi_idx.first << " " << plagi_idx.second;
 	return 0;
 }
