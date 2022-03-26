@@ -1,3 +1,5 @@
+// 최장 회문 부순서 문제이다.
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -7,8 +9,8 @@ int main() {
 	cin >> code;
 	int code_size = code.length();
 
-	vector<vector<string>> DP(code_size, (vector<string>(code_size)));
-
+	vector<vector<string>> DP(code_size, (vector<string>(code_size))); // 최장 회문의 길이는 숫자로 만들면 되지만, 출력을 해야하는데 어떡하나?
+									   // 문자열을 배열에 집어넣어버린다!
 	for (int i = 0; i < code_size; i++) {
 		DP[i][i] = code[i];
 	}
