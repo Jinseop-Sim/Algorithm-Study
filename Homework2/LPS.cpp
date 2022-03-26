@@ -17,12 +17,12 @@ int main() {
 
 	for (int k = 1; k < code_size; k++) {
 		for (int i = 0, j = i + k; j < code_size; i++, j++) {
-			if (code[i] == code[j]) DP[i][j] = code[i] + DP[i + 1][j - 1] + code[j];
+			if (code[i] == code[j]) DP[i][j] = code[i] + DP[i + 1][j - 1] + code[j]; // 짝이 맞는 경우에는, 양 쪽 끝에 문자열을 붙이며 나아간다.
 			else {
-				if (DP[i + 1][j].size() > DP[i][j - 1].size()) DP[i][j] = DP[i + 1][j];
+				if (DP[i + 1][j].size() > DP[i][j - 1].size()) DP[i][j] = DP[i + 1][j]; // 둘이 길이가 다를 땐, 길이가 더 긴 것을 택한다.
 				else if(DP[i +1][j].size() < DP[i][j - 1].size()) DP[i][j] = DP[i][j - 1];
 				else {
-					if (DP[i + 1][j] >= DP[i][j - 1]) DP[i][j] = DP[i][j - 1];
+					if (DP[i + 1][j] >= DP[i][j - 1]) DP[i][j] = DP[i][j - 1]; // 둘이 길이가 같을 땐, 사전순으로 빠른 것을 고른다.
 					else DP[i][j] = DP[i + 1][j];
 				}
 			}
