@@ -18,3 +18,16 @@
 ## Example : 스키장 스키 대여 문제
 
 ## 대표 Example : Knapsack
+
+## Floyd-Warshall Algorithm
+> 최단 경로를 구하는 문제에 적용되는 알고리즘이다.  
+
+- 원래 최단 경로를 구할 때에는 Dijkstra Algorithm이 이용된다.
+  - 하지만 Dijkstra는 Edge의 Weight의 합이 음수가 될 경우는 쓸 수가 없는 Algorithm이 된다!
+- ```DP(k)[i][j]``` 의 배열을 만들어 구한다.
+  - i부터 j 사이의 vertex들의 index는 k를 넘어갈 수 없다.
+  - k가 0일 경우는, ```weight(i, j)```가 된다.
+  - k가 무한대일 경우는, 연결이 되어있지 않은 것!
+  - ```DP(0)[i][j]``` 부터 차례차례 구해나간다.
+  - 그 식은 ```min(DP(k-1)[i][k] + DP(k-1)[k][i], DP(k-1)[i][j])```이 된다.
+  - 결국 ```D(N)[i][j]``` Matrix를 구해내는 데에 목적이 있다.
