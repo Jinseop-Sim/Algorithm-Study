@@ -1,44 +1,39 @@
 #include <iostream>
-#include <string>
+#include <vector>
 using namespace std;
 
-bool is_palin = true;
-bool is_quasi = false;
-void palindrome_test(string palin) {
-	for (int j = 0; j < palin.size()/2; j++) {
-		if (palin[j] != palin[palin.size() - j - 1]) { is_palin = false;  break; }
+void make_base(string sentence, vector<vector<string>>& DP) {
+	for (int i = 0; i < sentence.length(); i++) {
+		DP[i][i] = sentence[i];
 	}
-	if(is_palin) cout << 1 << endl;
 }
 
-void quasi_test(string palin) {
-	string temp = palin;
-	for (int i = 0; i < palin.size(); i++) {
-		is_palin = true;
-		palin.erase(i, 1);
-		for (int j = 0; j < palin.size() / 2; j++) {
-			if (palin[j] != palin[palin.size() - j - 1]) { is_palin = false;  break; }
-		}
-		palin = temp;
-		if (is_palin) {
-			cout << 2 << endl;
-			return;
+void make_palindrome(string sentence, vector<vector<string>>& DP) {
+	for (int k = 1; k < sentence.length(); k++) {
+		for (int i = 0, j = i + k; j < sentence.length(); i++, j++) {
+			if (sentence[i] == sentence[j]) DP[i][j] = sentence[i] + DP[i + 1][j - 1] + sentence[j];
+			else {
+				if (DP[i + 1][j].size() > DP[i][j - 1].size()) DP[i][j] = DP[i + 1][j];
+				else if (DP[i + 1][j].size() < DP[i][j - 1].size()) DP[i][j] = DP[i][j - 1];
+				else {
+					if (DP[i + 1][j] >= DP[i][j - 1]) DP[i][j] = DP[i][j - 1];
+					else DP[i][j] = DP[i + 1][j];
+				}
+			}
 		}
 	}
-	cout << 3 << endl;
 }
 
 int main() {
-	int num;
-	string palin;
+	string sentence;
+	cin >> sentence;
+	vector<vector<string>> DP(sentence.length(), (vector<string>(sentence.length())));
 
-	cin >> num;
-	for (int i = 0; i < num; i++) {
-		is_palin = true;
-		cin >> palin;
-		palindrome_test(palin);
-		if (!is_palin)	quasi_test(palin);
-	}
+	make_base(sentence, DP);
+	make_palindrome(sentence, DP);
 
-	return 0;
+	cout << DP[0][sentence.length()-1];
 }
+
+// 동적 계획법을 이용한 LPS 문제이다.
+// 최장 회문 부순서.
