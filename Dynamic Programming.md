@@ -24,6 +24,7 @@
 
 - 원래 최단 경로를 구할 때에는 Dijkstra Algorithm이 이용된다.
   - 하지만 Dijkstra는 Edge의 Weight의 합이 음수가 될 경우는 쓸 수가 없는 Algorithm이 된다!
+  - Theta(N^3)의 시간 복잡도를 가진다.
 - ```DP(k)[i][j]``` 의 배열을 만들어 구한다.
   - i부터 j 사이의 vertex들의 index는 k를 넘어갈 수 없다.
   - k가 0일 경우는, ```weight(i, j)```가 된다.
@@ -31,3 +32,30 @@
   - ```DP(0)[i][j]``` 부터 차례차례 구해나간다.
   - 그 식은 ```min(DP(k-1)[i][k] + DP(k-1)[k][i], DP(k-1)[i][j])```이 된다.
   - 결국 Vertex가 N개일 때 ```D(N)[i][j]``` Matrix를 구해내는 데에 목적이 있다.
+
+## Game에서 이용하는 방법
+- 완전 정보 게임
+  - ex) 바둑, 오목, IQ Puzzle
+- 확률 게임
+  - ex) 고스톱, 포커, 야구
+- Game Tree를 구성해서 해결하는 것이 일반적인 해법!
+
+### Example : 바둑돌 게임  
+![image](https://user-images.githubusercontent.com/71700079/160313380-fcdb8561-bcc4-45ae-a37f-28f6312fefef.png)  
+- GAME 1
+  - K개의 바둑돌이 있다.
+  - 자신의 차례에 1개, 2개, 혹은 3개의 돌을 가져갈 수 있다.
+  - 자신의 차례에 정해진 동작이 불가하면 그 사람이 진 것이다.  
+  ![image](https://user-images.githubusercontent.com/71700079/160313619-88f52c3f-d231-462f-b291-3f1d0b295471.png)  
+  - 이는 Game Tree에서 자신의 아래 Node (K-1, K-2, K-3) 3개 모두가 First일 경우, 자신은 Second.
+    - Node중 하나라도 Second일 경우, 자신은 First가 된다.
+
+- GAME 2
+  - GAME 1과는 다르게 1개, 3개, 4개의 돌을 가져갈 수 있다.
+  - 결국 마찬가지로 Game Tree에서 자신의 아래 Node (N-1, N-3, N-4) 3개 모두가 First일 경우, 자신은 Second.
+    - Node중 하나라도 Second일 경우, 자신은 First.
+
+- Game 3
+  - 자신의 차례에 한번에 1개, 3개, 4개의 돌을 가져갈 수 있다.
+  - 하지만 앞 사람이 가져간 만큼 다음 사람이 가져갈 수는 없다!(중복 금지)  
+  ![image](https://user-images.githubusercontent.com/71700079/160314425-067cdd46-443e-4474-bb2d-acc84ebffbda.png)  
