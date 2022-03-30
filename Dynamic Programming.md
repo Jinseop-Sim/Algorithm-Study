@@ -59,3 +59,5 @@
   - 자신의 차례에 한번에 1개, 3개, 4개의 돌을 가져갈 수 있다.
   - 하지만 앞 사람이 가져간 만큼 다음 사람이 가져갈 수는 없다!(중복 금지)  
   ![image](https://user-images.githubusercontent.com/71700079/160314425-067cdd46-443e-4474-bb2d-acc84ebffbda.png)  
+
+## LCS : 최장 공통 서열
