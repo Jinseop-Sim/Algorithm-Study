@@ -15,6 +15,10 @@
   - 초기 조건
   - 적당한 크기의 Table 
 
+### 동적 계획법의 시간 복잡도
+- Space complexity : Table의 크기
+- Time complexity : Table의 모든 Entry를 채우는 데에 걸리는 시간.
+
 ## Example : 스키장 스키 대여 문제
 > 스키장에서 장비를 대여해서 즐기려고 한다.  
 > 대여 일 수와 가격은 아래와 같으며, 날짜에 'O' 표시가 된 날만 스키를 탈 수 있다.   
@@ -27,7 +31,11 @@
   - 따라서 점화식은 min(DP[i-1] + 3, DP[i-3] + 7, DP[i-7] + 10)가 된다.
 
 ## 대표 Example : Knapsack
- 
+> 물건들에 각각 무게가 있을 때, 가방의 최대 하중을 맞출 수 있는가?에 대한 문제이다.  
+> 이것 또한 DP의 대표적인 문제!  
+
+![image](https://user-images.githubusercontent.com/71700079/160741146-cd4af94d-12ab-48f8-87fa-268fe1044668.png)  
+- DP 식을 구해보면, 
 ## Floyd-Warshall Algorithm
 > 최단 경로를 구하는 문제에 적용되는 알고리즘이다.  
 
