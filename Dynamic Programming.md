@@ -61,3 +61,5 @@
   ![image](https://user-images.githubusercontent.com/71700079/160314425-067cdd46-443e-4474-bb2d-acc84ebffbda.png)  
 
 ## LCS : 최장 공통 서열
+> 두 문자열 사이의 가장 긴 공통된 부분 순서들을 구하는 문제이다.  
+> 대표적인 DP 문제.  
