@@ -16,9 +16,18 @@
   - 적당한 크기의 Table 
 
 ## Example : 스키장 스키 대여 문제
+> 스키장에서 장비를 대여해서 즐기려고 한다.  
+> 대여 일 수와 가격은 아래와 같으며, 날짜에 'O' 표시가 된 날만 스키를 탈 수 있다.   
+
+![image](https://user-images.githubusercontent.com/71700079/160738514-54ebf0f8-5476-4b44-a352-46f075053648.png)
+![image](https://user-images.githubusercontent.com/71700079/160738547-40abece3-143b-4400-acd7-06770eb63b7c.png)  
+
+- 날짜를 하루씩 옮겨가며 1일권, 3일권, 7일권 중에 가장 돈이 적게 드는 입장권을 배열에 저장하며 푼다.
+  - 중요한 것은 1일권, 3일권, 7일권의 Count를 현재 날짜로부터 뒤로 세는 것.
+  - 따라서 점화식은 min(DP[i-1] + 1, DP[i-3] + 3, DP[i-7] + 10)가 된다.
 
 ## 대표 Example : Knapsack
-
+ 
 ## Floyd-Warshall Algorithm
 > 최단 경로를 구하는 문제에 적용되는 알고리즘이다.  
 
