@@ -22,8 +22,8 @@
 - Array[n]이 있을 때, n개 중 임의로 __Pivot__ 값을 하나 정한다.
   - 그 Pivot 값 보다 작은 값은 왼쪽, 큰 값은 오른쪽으로 보내버리는 식으로 반복 정렬한다!
 - Complexity
-  - Worst Case는 Pivot이 항상 제일 작은(큰) 값인 경우, O(N^2)
-  - Best Case는 Pivot이 항상 반으로 쪼개서 O(logN) 이 되는 경우.  
+  - Worst Case는 Pivot이 항상 제일 작은(큰) 값인 경우에 T(N) = N + T(N-1)가 되므로, O(N^2)이다.
+  - Best Case는 Pivot이 운이 좋아서 항상 반으로 쪼개는 경우에 T(N) = N + T(N/2)가 되므로, O(logN)이다.
  
 ## 분할 정복법의 예시
 - N칸의 배열에서 큰 수 구하기
