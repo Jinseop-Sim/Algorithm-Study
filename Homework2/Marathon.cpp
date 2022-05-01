@@ -4,7 +4,6 @@
 using namespace std;
 
 int v = 0, e = 0, res_count = 0;
-
 vector<vector<char>> marathon_map(26, vector<char>());
 vector<vector<int>> dist_map(26, vector<int>(26, 0));
 vector<bool> visit(26, 0);
@@ -29,19 +28,15 @@ void backtrack(int src, int sum) {
 			res_count++;
 			return;
 		}
+		else return; 
 	}
+	else if (sum > 42) return;
 
 	for (int i = 0; i < marathon_map[src].size(); i++) {
 		if (!visit[marathon_map[src][i] - 'a']) {
-			visit[marathon_map[src][i] - 'a'] = true;
 			sum += dist_map[src][marathon_map[src][i] - 'a'];
+			visit[marathon_map[src][i] - 'a'] = true;
 			my_stack.push_back(marathon_map[src][i]);
-			if (sum > 42) {
-				my_stack.pop_back();
-				sum -= dist_map[src][marathon_map[src][i] - 'a'];
-				visit[marathon_map[src][i] - 'a'] = false;
-				return;
-			}
 			backtrack(marathon_map[src][i] - 'a', sum);
 			my_stack.pop_back();
 			sum -= dist_map[src][marathon_map[src][i] - 'a'];
