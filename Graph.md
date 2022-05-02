@@ -60,3 +60,5 @@
 
 ## Backtracking
 > 되추적법.  
+### Bound & Branch
+> 분기 한정.  
