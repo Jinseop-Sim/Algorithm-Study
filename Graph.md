@@ -57,3 +57,6 @@
   5. 목적지 Vertex가 나올 때 까지 반복. 
 
 ### Bellman Ford Algorithm
+
+## Backtracking
+> 되추적법.  
