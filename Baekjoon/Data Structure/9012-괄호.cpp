@@ -21,3 +21,6 @@ int main(void) {
 		else cout << "NO" << endl;
 	}
 }
+
+// Stack의 특성을 이용해서 ()이 완성될 시에 POP을 해준다.
+// 그 작업 이후에 Stack내에 뭔가 남아있으면, 그것은 불완전 괄호.
