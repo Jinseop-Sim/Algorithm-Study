@@ -4,7 +4,7 @@ using namespace std;
 
 int n = 0;
 void quadtree(int x, int y, int limit, vector<vector<int>> &maps) {
-	if (limit == 1) {
+	if (limit == 1) {           // 마지막까지 깊게 들어가서 길이가 1인 사각형이 되면, 출력한다.
 		cout << maps[y][x];
 		return;
 	}
@@ -12,22 +12,22 @@ void quadtree(int x, int y, int limit, vector<vector<int>> &maps) {
 	bool zero_only = true, one_only = true;
 	for (int i = x; i < x + limit; i++) {
 		for (int j = y; j < y + limit; j++) {
-			if (maps[j][i]) zero_only = false;
-			else one_only = false;
+			if (maps[j][i]) zero_only = false; // 해당 사분면을 모두 탐색해서 전부 1이면 one_only가 true로 남고
+			else one_only = false; // 전부 0이면 zero_only가 true로 남는다.
 		}
 	}
 
-	if (zero_only) cout << 0;
-	else if (one_only) cout << 1;
+	if (zero_only) cout << 0; // 전부 0인 경우에, 괄호 없이 0 출력
+	else if (one_only) cout << 1; // 전부 1인 경우에, 괄호 없이 0 출력
 	else {
-		cout << "(";
-		quadtree(x, y, limit / 2, maps);
-		quadtree(x + limit / 2, y, limit / 2, maps);
-		quadtree(x, y + limit / 2, limit / 2, maps);
-		quadtree(x + limit / 2, y + limit / 2, limit / 2, maps);
+		cout << "(";  // 사분면을 탐색할 때, 각 사분면은 괄호로 구분하도록 되어있다.
+		quadtree(x, y, limit / 2, maps); // 2사분면
+		quadtree(x + limit / 2, y, limit / 2, maps); // 1사분면
+		quadtree(x, y + limit / 2, limit / 2, maps); // 3사분면
+		quadtree(x + limit / 2, y + limit / 2, limit / 2, maps); // 4사분면
 		cout << ")";
 	}
-	return;
+	return; // 탐색이 끝나면 종료한다.
 }
 
 int main(void) {
