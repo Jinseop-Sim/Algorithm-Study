@@ -36,6 +36,8 @@ bool prunning(char start) {
 
 void backtrack(int src, int sum) {
 	if (!my_stack.empty() && my_stack[my_stack.size() - 1] == 'a') {
+		cout << endl;
+		for (auto i : my_stack) cout << i << " ";
 		if (max_sum < sum) max_sum = sum;
 		return;
 	}
