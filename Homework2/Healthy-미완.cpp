@@ -26,7 +26,7 @@ bool compare(nutri& a, nutri& b) {
 }
 
 bool compare_ans(vector<int>& a, vector<int>& b) {
-	return a[a.size() - 1] > b[b.size() - 1];
+	return a.back() > b.back();
 }
 
 void plus_nutri(int i) {
@@ -79,6 +79,7 @@ void backtrack(int start, vector<bool>& visit) {
 
 int main() {
 	int max_sum = 0;
+	bool is_fin = false;
 	nutri temp;
 	cin >> n;
 	cin >> min_struc.prot >> min_struc.fat >> min_struc.carbo >> min_struc.vit;
@@ -91,13 +92,12 @@ int main() {
 		food_list.push_back(temp);
 	}
 
-	sort(food_list.begin(), food_list.end(), compare);
-
-	if (all_sum.prot < min_struc.prot || all_sum.fat < min_struc.fat || all_sum.carbo < min_struc.carbo || all_sum.vit < min_struc.vit) {}
-	else backtrack(0, visit);
-
-	sort(ans_list.begin(), ans_list.end(), compare_ans);
-
-	if (min_sum == INTEGER_MAX) cout << 0;
-	else for (int i = 0; i < ans_list[0].size() - 1; i++) cout << ans_list[0][i] << " ";
+	if (all_sum.prot < min_struc.prot || all_sum.fat < min_struc.fat || all_sum.carbo < min_struc.carbo || all_sum.vit < min_struc.vit) { is_fin = true; }
+	if (is_fin) cout << 0;
+	else {
+		sort(food_list.begin(), food_list.end(), compare);
+		backtrack(0, visit); 
+		sort(ans_list.begin(), ans_list.end(), compare_ans);
+		for (int i = 0; i < ans_list[0].size() - 1; i++) cout << ans_list[0][i] << " ";
+	}
 }
