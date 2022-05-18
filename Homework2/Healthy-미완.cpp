@@ -101,3 +101,5 @@ int main() {
 		for (int i = 0; i < ans_list[0].size() - 1; i++) cout << ans_list[0][i] << " ";
 	}
 }
+
+// Bound를 추가로 설계해보자.
