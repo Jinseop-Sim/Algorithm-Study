@@ -50,3 +50,5 @@ int main() {
 
 	return 0;
 }
+
+// 대표적인 BFS문제이다.
