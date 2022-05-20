@@ -10,10 +10,10 @@ priority_queue<int, vector<int>, greater<int>> answer;
 vector<vector<int>> apt_map;
 queue<pair<int, int>> q;
 
-void bfs(int f_x, int f_y, vector<vector<bool>>& visit) {
+void bfs(int f_x, int f_y) {
 	q.push(make_pair(f_x, f_y));
 
-	visit[f_x][f_y] = true;
+	apt_map[f_x][f_y] = -1;
 	cnt++;
 
 	while (!q.empty()) {
@@ -25,9 +25,9 @@ void bfs(int f_x, int f_y, vector<vector<bool>>& visit) {
 			int nx = x + dx[i];
 			int ny = y + dy[i];
 			if ((nx >= 0 && nx < row) && (ny >= 0 && ny < row)) {
-				if (!visit[nx][ny] && apt_map[nx][ny]) {
+				if (apt_map[nx][ny] == 1) {
+					apt_map[nx][ny] = -1;
 					q.push(make_pair(nx, ny));
-					visit[nx][ny] = true;
 					cnt++;
 				}
 			}
@@ -37,7 +37,6 @@ void bfs(int f_x, int f_y, vector<vector<bool>>& visit) {
 
 int main() {
 	cin >> row;
-	vector<vector<bool>> visit(row, vector<bool>(row, false));
 
 	for (int i = 0; i < row; i++) {
 		vector<int> temp_v;
@@ -48,9 +47,9 @@ int main() {
 
 	for (int i = 0; i < row; i++) {
 		for (int j = 0; j < row; j++) {
-			if (!visit[i][j] && apt_map[i][j]) { 
+			if (apt_map[i][j] == 1) { 
 				cnt = 0;
-				bfs(i, j, visit); 
+				bfs(i, j); 
 				answer.push(cnt);
 			}
 		}
