@@ -3,7 +3,7 @@
 using namespace std;
 
 struct cmp {
-	bool operator()(const string& a, const string& b) const{
+	bool operator()(const string& a, const string& b) const{ // Set도 PQ와 마찬가지로 정렬이 가능하다.
 		if (a.length() == b.length()) return a < b;
 		return a.length() < b.length();
 	}
