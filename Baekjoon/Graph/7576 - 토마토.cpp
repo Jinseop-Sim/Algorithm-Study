@@ -33,10 +33,10 @@ void bfs(vector<vector<bool>>& visit) {
 }
 
 void init_queue(vector<vector<bool>>& visit) {
-	for (int i = 0; i < coord.size(); i++) {
-		visit[coord[i].first][coord[i].second] = true;
-		q.push(coord[i]);
-	}
+	for (int i = 0; i < coord.size(); i++) { // 시작점이 여러개일 수 있기 때문에, 배열에 저장해놓고
+		visit[coord[i].first][coord[i].second] = true; // Queue에 Push하도록 했다.
+		q.push(coord[i]); // 그래야지 동시에 한 칸씩 움직일 수 있으니까.
+	}		          // 나머지는 BFS와 동일하다.
 }
 
 void check_rot() {
@@ -67,3 +67,5 @@ int main(void) {
 	if (is_rot) cout << -1;
 	else cout << max_v - 1;
 }
+
+// 간단한 BFS 문제였다.
