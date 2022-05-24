@@ -18,7 +18,8 @@ int main() {
 		for (int j = 1; j < limit+1; j++) {
 			if (j - item_list[i-1].first >= 0) DP[i][j] = max(DP[i - 1][j], DP[i - 1][j - item_list[i-1].first] + item_list[i-1].second);
         // 현재 item을 넣었을 때 무게가 남는다면?
-        // 이전에 하나만 넣었던 Item을 그대로 넣어 놓느냐, 아니면 현재 item + 무게를 초과하지 않는 선에서의 이전 item을 넣느냐
+        // 이전에 하나만 넣었던 Item을 그대로 넣어 놓느냐, 아니면
+	// (현재 무게 한도 - 현재 Item 무게)를 한 칸의 값을 더한 값을 저장하느냐.
         // 둘 중 무거운 것으로 넣는다.
 			else DP[i][j] = DP[i - 1][j];
         // 무게가 남지 않는 경우에는 이전에 하나만 넣었던 Item을 그대로 계속 가져온다.
@@ -29,5 +30,3 @@ int main() {
 
 	return 0;
 }
-
-![KakaoTalk_20220524_180153385](https://user-images.githubusercontent.com/71700079/169993853-37bfe888-67e0-4262-8a8e-b0170333b235.png)
