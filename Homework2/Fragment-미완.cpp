@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <queue>
 using namespace std;
 
 struct frag {
@@ -9,12 +8,9 @@ struct frag {
 	string fragment;
 };
 
-int count_v[5];
-int n = 0, cnt = 1, min_len = 2100000000, start = 0, end_i = 0;
+int n = 0, cnt = 1;
 frag temp_f; string temp, trash;
 vector<frag> frags;
-vector<frag> test;
-vector<queue<frag>> frag_q(5);
 
 int conversion(char alpha) {
 	switch (alpha) {
@@ -31,32 +27,43 @@ int conversion(char alpha) {
 	}
 }
 
+void msd_radix(int sta, int end, int wh, vector<frag>& sol_v) {
+	if (end <= sta + 1) return;
+
+	int count_v[6] = { 0, };
+	int temp_count[6] = { 0, };
+
+	for (int i = sta; i < end; i++) { 
+		count_v[conversion(frags[i].fragment[wh]) + 1]++;
+		temp_count[conversion(frags[i].fragment[wh]) + 1]++;
+	}
+	for (int i = 0; i < 5; i++) { 
+		count_v[i + 1] += count_v[i]; 
+		temp_count[i + 1] += temp_count[i]; 
+	}
+	for (int i = sta; i < end; i++) sol_v[sta + temp_count[conversion(frags[i].fragment[wh])]++] = frags[i];
+	for (int i = sta; i < end; i++) frags[i] = sol_v[i];
+
+	for (int i = 0; i < 5; i++) msd_radix(sta + count_v[i], sta + count_v[i + 1], wh + 1, sol_v);
+}
+
 int main(void) {
 	cin >> n;
 
 	getline(cin, trash);
-	while(1) {
+	while (1) {
 		getline(cin, temp);
 		if (temp == "") break;
-		if (min_len > temp.length()) min_len = temp.length();
 		temp_f.fragment = temp; temp_f.id = cnt; cnt++;
 		frags.push_back(temp_f);
 	}
 
-	int sz = frags.size();
-	while (min_len > 0) {
-		for (int i = 0; i < frags.size(); i++) frag_q[conversion(frags[i].fragment[min_len-1])].push(frags[i]);
-		for (int i = 0; i < 5; i++) {
-			while (!frag_q[i].empty()) {
-				frags.push_back(frag_q[i].front());
-				frag_q[i].pop();
-			}
-		}
-		frags.erase(frags.begin(), frags.begin() + sz);
-		min_len--;
-	}
+	vector<frag> sol_v(frags.size());
+	msd_radix(0, frags.size(), 0, sol_v);
 
-	for (auto i : frags) cout << i.id << " " << i.fragment << '\n';
+	cout << frags[n - 2].id << '\n';
+	cout << frags[n - 1].id << '\n';
+	cout << frags[n].id << '\n';
 
 	return 0;
 }
