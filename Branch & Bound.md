@@ -11,3 +11,6 @@
   - 하지만 Branch & Bound의 경우엔?
   - State Tree를 그려나가면서, 각 점에 대해서 가장 가능성 있는 길로 가야한다! How?
     - 야자수까지 직선거리가 가장 짧은 길을 선택한다. (Priority Queue의 이용, 후보들을 계속 관리해주는 것이 중요!)
+  - Branching : 가능성 있는 Node들로 가지를 뻗는 작업을 의미한다.
+    - Priority Queue를 통해서 제일 가능성 있는 Node부터 꺼내서 확인한다.
+    - 이 때, 그 Node가 더 이상 진행할 수 없는 Node라고 판단되면 __Bound(Pruning)__ 시킨다고 한다.
