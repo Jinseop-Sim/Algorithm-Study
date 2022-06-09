@@ -62,3 +62,7 @@
 > 되추적법.  
 ### Bound & Branch
 > 분기 한정.  
+
+## Strongly Connected?
+
+### Kosaraju Algorithm
