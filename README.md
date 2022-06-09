@@ -9,4 +9,6 @@ __It's my Algorithm Study with PNU!__
 - How to prepare Coding TEST?
 - STL in C++
 
-<img align="center" src="http://mazassumnida.wtf/api/v2/generate_badge?boj=dmdlzm123">
+<p align = "center">
+<img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=dmdlzm123">
+  </p>
