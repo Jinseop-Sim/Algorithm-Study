@@ -64,5 +64,7 @@
 > 분기 한정.  
 
 ## Strongly Connected?
+> Strongly Connected Directed Graph란 무엇일까?  
+
 
 ### Kosaraju Algorithm
