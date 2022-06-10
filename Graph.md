@@ -66,5 +66,23 @@
 ## Strongly Connected?
 > Strongly Connected Directed Graph란 무엇일까?  
 
+- Graph 전체의 Vertex 집합에서, 어떤 두 Vertex u, v를 찍었을 때 (u, v), (v, u) 모두 길이 존재하는 경우 우리는 Strongly Connected라고 한다.
+
+### SCC(Strongly Connected Component)
+> Strongly Connected Component란 무엇일까?  
+
+- 이번엔 Graph 전체가 아닌, Graph 내의 어떤 Vertex 집합이다.
+- 어떤 두 Vertex u, v를 찍었을 때 (u, v), (v, u) 모두 길이 존재하는 경우, 그 집합을 Strongly Connected Component라고 한다.
 
 ### Kosaraju Algorithm
+> 어떤 Graph가 주어졌을 때, 그 Graph 내의 SCC가 몇 개인지  
+> 또는 어떤 Vertex의 집합인지를 구할 수 있는 Algorithm이다.  
+
+![image](https://user-images.githubusercontent.com/71700079/173041818-c93a378d-a7a7-4875-8ff0-608f23cfca2a.png)  
+1. 위와 같은 Graph가 존재할 때, 1번부터 DFS를 시행해보자.
+2. 이후, 종료되는 순서대로 Stack에 집어 넣는다. ( 3, 2, 6, 5, 4, 1 )   
+![image](https://user-images.githubusercontent.com/71700079/173042122-b0124a51-97bc-413f-bc07-b7d50b38a223.png)  
+3. 위와 같이 역방향 Graph를 그린다.
+4. 이후 Stack의 Top(가장 늦게 끝났던 Vertex)부터 역방향 Graph에서 다시 DFS를 돌린다.
+5. 그럼 연결 요소들이 여러개 등장할텐데, 그것들이 각각 SCC(Strongly Connected Component)가 된다.  
+![image](https://user-images.githubusercontent.com/71700079/173042283-ac3a33b7-7637-4748-ad97-c2ad5acf2fda.png)  
