@@ -7,3 +7,7 @@
 - 가장 단순한 방법은 Suffix를 모두 만든 후, 직접 정렬하는 것이다. (이는 O(N^2 log^2)이 소모된다. 낭비!)
   - 가장 빠른 방법은 O(N)만에 만들 수가 있다! (하지만 복잡하다.)
   - 가장 쉬운 방법은 O(NlogN)만에 만들어진다.
+
+## Manber-Myeres Algorithm
+
+## LCP Algorithm(Kasai's)
