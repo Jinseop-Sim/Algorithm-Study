@@ -11,14 +11,17 @@
 - 아래와 같은 Graph가 있다고 생각해보자.  
 ![image](https://user-images.githubusercontent.com/71700079/175264507-93e80c60-9106-4093-aecd-257ef6577319.png)   
 
-1. 출발 정점을 1이라고 했을 때, 제일 처음엔 출발 노드로부터 이어진 다른 Node까지의 모든 비용을 저장한다.  
+- STEP 1
+  - 출발 정점을 1이라고 했을 때, 제일 처음엔 출발 노드로부터 이어진 다른 Node까지의 모든 비용을 저장한다.  
 ![image](https://user-images.githubusercontent.com/71700079/175264764-d0ff0d91-3562-4ac7-bb8a-6758c33735aa.png)  
     - 그럼 위와 같은 표가 만들어진다.
-2. 이제 최단 경로를 찾을 수 있도록 계속 갱신을 해야한다.
+- STEP 2
+  - 이제 최단 경로를 찾을 수 있도록 계속 갱신을 해야한다.
     - 방문하지 않은 Node중에서 가장 비용이 적은 4번 Node부터 들려서 갱신을 해보자.
     - 4번 Node를 거쳐서 갈 수 있게 된 Node나, 더 나은 경로가 있으면 아래와 같이 갱신한다.  
   ![image](https://user-images.githubusercontent.com/71700079/175265115-9767d8c6-9e96-4404-83eb-4f9d1ba888a0.png)  
-3. 남은 미 방문 Node들도 모두 돌며 똑같이 반복한다.
+- STEP 3
+  - 남은 미 방문 Node들도 모두 돌며 똑같이 반복한다.
     - 최종적으로 갱신이 완료된 시점의 최단 경로 표는 아래와 같다.  
   ![image](https://user-images.githubusercontent.com/71700079/175265357-611242c0-10e9-48c2-ad66-81243e35673d.png)
 - 구현 Code는 아래와 같다.
@@ -171,9 +174,16 @@ int main() {
 ![image](https://user-images.githubusercontent.com/71700079/174823615-e2e398c4-22be-4188-891e-2b8241c1ed4a.png)  
 
 - STEP 1
+  - 처음 갱신되는 Table은 아래와 같다.  
+  ![image](https://user-images.githubusercontent.com/71700079/175305210-4b898d31-5e77-463e-a86c-fefd7a08f91c.png)  
 - STEP 2
+  - 이후 1번 Node를 거쳐가는 경우를 고려하여 Table을 갱신한다.  
+  ![image](https://user-images.githubusercontent.com/71700079/175305333-dd61d61c-3a43-4536-bfca-9d3e617fe296.png)   
 - STEP 3
-- STEP 4
+  - 이후 2번 Node를 거쳐가는 경우를 고려하여 Table을 갱신한다.  
+  ![image](https://user-images.githubusercontent.com/71700079/175305436-7689bae2-3512-4f7e-b88f-fca14bec3e1a.png)  
+
+- 이후 단계들은 Table 갱신의 반복이다.
 - 시간 복잡도는 노드 수가 N개일 때, 단계마다 O(N^2)의 연산을 반복하므로, O(N^3)이 된다.
 
 ### Example : 백준 11404 - 플로이드
