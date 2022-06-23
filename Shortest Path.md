@@ -176,3 +176,64 @@ int main() {
 - STEP 4
 - 시간 복잡도는 노드 수가 N개일 때, 단계마다 O(N^2)의 연산을 반복하므로, O(N^3)이 된다.
 
+### Example : 백준 11404 - 플로이드
+```C++
+#include <iostream>
+#include <vector>
+using namespace std;
+#define INF 1000000000
+
+int nodes = 0, bus = 0;
+int cities[101][101];
+
+void make_input() {
+    for (int i = 0; i < bus; i++) {
+        int src, dest, d;
+        cin >> src >> dest >> d;
+        if(cities[src][dest] > d)
+            cities[src][dest] = d;
+    }
+}
+
+void init_map() { // Initialize with INFINITE
+    for (int i = 1; i <= nodes; i++) {
+        for (int j = 1; j <= nodes; j++) {
+            if (i == j) cities[i][j] = 0;
+            else cities[i][j] = INF;
+        }
+    }
+}
+
+void floyd_warshall() { // floyid warshall
+    for (int sol = 1; sol <= nodes; sol++) {
+        for (int i = 1; i <= nodes; i++) {
+            for (int j = 1; j <= nodes; j++) {
+                if (cities[i][sol] != INF && cities[sol][j] != INF) {
+                    cities[i][j] = min(cities[i][j], cities[i][sol] + cities[sol][j]);
+                }
+            }
+        }
+    }
+}
+
+void print_answer() {
+    for (int i = 1; i <= nodes; i++) {
+        for (int j = 1; j <= nodes; j++) {
+            if (cities[i][j] == INF) cout << 0 << " ";
+            else cout << cities[i][j] << " ";
+        }
+        cout << '\n';
+    }
+}
+
+int main() {
+    cin >> nodes >> bus;
+
+    init_map();
+    make_input();
+    floyd_warshall();
+    print_answer();
+
+    return 0;
+}
+```
