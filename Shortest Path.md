@@ -7,7 +7,7 @@
 - 간선의 가중치는 음수가 될 수 없다.
   - 따라서 현실세계에 가장 적합한 Shortest Path Algorithm이다.
 
-### Example : Basic Dijkstra
+### Example : Basic Dijkstra, O(N^2)
 - 아래와 같은 Graph가 있다고 생각해보자.  
 ![image](https://user-images.githubusercontent.com/71700079/175264507-93e80c60-9106-4093-aecd-257ef6577319.png)   
 
@@ -90,6 +90,71 @@ int main() {
     for (int i = 1; i <= nodes; i++) {
         if (dist[i] == INF) cout << "INF" << '\n';
         else cout << dist[i] << '\n';
+    }
+
+    return 0;
+}
+```
+
+### Example : Heap, O(ElogV)
+- 위의 예시는 시간 복잡도가 O(N^2)이나 되는 Algorithm 이었다.
+- 이번 예시는 Min Heap(Priority Queue)를 이용하여 O(ElogV)만에 끝낼 수 있는 Algorithm이다.
+
+```C++
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+#define INF 1000000000
+
+int nodes = 0, edges = 0, start = 0;
+vector<pair<int, int>> graph[100001]; // 연결된 node와 weight
+int dist_arr[100001];
+
+void dijkstra(int start) {
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> min_heap;
+    min_heap.push(make_pair(0, start)); // PQ에 자기자신 삽입 (거리, node 번호).
+    dist_arr[start] = 0; // 자신의 거리는 0으로 초기화
+
+    while(!min_heap.empty()) {
+        int dist = min_heap.top().first;
+        int curr_node = min_heap.top().second;
+        min_heap.pop();
+
+        if (dist > dist_arr[curr_node]) continue;
+        // 현재 node가 이미 처리한 node라면 무시.
+
+        for (int i = 0; i < graph[curr_node].size(); i++) {
+            int cost = dist_arr[curr_node] + graph[curr_node][i].second;
+            // 현재 지정된 node와 연결된 다른 node와의 거리를 더해본다.
+            // ex) curr_node가 2면, 1 - 2 - 4 & 1 - 2 - 3 으로 두 번 돈다.
+
+            if (cost < dist_arr[graph[curr_node][i].first]) {
+                dist_arr[graph[curr_node][i].first] = cost;
+                min_heap.push(make_pair(cost, graph[curr_node][i].first));
+                // 만약 해당 경로에 대해서 원래 dist 배열의 가중치보다 cost가 작다면,
+                // dist_arr에 교체해주고, 연결된 Node들을 PQ에 삽입.
+                // ex) curr_node가 1 - 4 보다, 1 - 2 - 4가 더 짧은 거리이면 교체.
+            }
+        }
+    }
+}
+
+int main() {
+    cin >> nodes >> edges >> start;
+    
+    for (int i = 0; i < edges; i++) {
+        int u = 0, v = 0, weight = 0;
+        cin >> u >> v >> weight;
+        graph[u].push_back(make_pair(v, weight));
+    } // 입력
+
+    fill_n(dist_arr, 100001, INF); // 초기 Dist는 모두 INF로 초기화
+    dijkstra(start);
+    
+    for (int i = 1; i <= nodes; i++) {
+        if (dist_arr[i] == INF) cout << "INF" << '\n';
+        else cout << dist_arr[i] << '\n';
     }
 
     return 0;
